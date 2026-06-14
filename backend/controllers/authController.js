@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Resume = require('../models/Resume');
 
 /**
  * @desc    Register user
@@ -15,6 +16,16 @@ exports.signup = async (req, res, next) => {
       fullName,
       email,
       password
+    });
+
+    // Automatically create a default resume for the new user
+    await Resume.create({
+      userId: user._id,
+      title: 'My Resume 1',
+      personalInfo: {
+        fullName: user.fullName,
+        email: user.email
+      }
     });
 
     sendTokenResponse(user, 201, res);
