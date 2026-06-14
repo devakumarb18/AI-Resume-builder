@@ -30,15 +30,15 @@ app.use(mongoSanitize()); // Prevent NoSQL injection
 
 // Mount Routes (with /api prefix for standard usage)
 app.use('/api/auth', authRoutes);
-app.use('/api/resumes', resumeRoutes);
+app.use('/api/resume', resumeRoutes);
 app.use('/api/ai', aiRoutes);
-app.use('/api/uploads', uploadRoutes);
+app.use('/api/upload', uploadRoutes);
 
 // Mount Routes (without /api prefix as a fallback for Vercel misconfiguration)
 app.use('/auth', authRoutes);
-app.use('/resumes', resumeRoutes);
+app.use('/resume', resumeRoutes);
 app.use('/ai', aiRoutes);
-app.use('/uploads', uploadRoutes);
+app.use('/upload', uploadRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
